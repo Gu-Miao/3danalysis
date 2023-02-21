@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/node_modules/cesium/Build/Cesium/Widgets/widgets.css" />
+    <title>淹没分析</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #cesiumContainer {
+        height: 100vh;
+      }
+      #toolbar {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 8px;
+        border-radius: 6px;
+        color: #fff;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      input {
+        width: 55px;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 4px 6px;
+      }
+      em {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.85em;
+      }
+      .highlight {
+        color: #fee301;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar">
+      <label for="max">
+        <span>最高海拔：</span>
+        <input type="number" id="max" min="0" step="10" value="0" />
+        &nbsp;米
+      </label>
+      <label for="min">
+        <span>最低海拔：</span>
+        <input type="number" id="min" min="0" step="10" value="0" />
+        &nbsp;米
+      </label>
+      <label for="speed">
+        <span>淹没速度：</span>
+        <input type="number" id="speed" min="0" step="1" value="10" />
+        &nbsp;米/秒
+      </label>
+      <button id="start" disabled>开始分析</button>
+      <button id="cancel" style="display: none">取消</button>
+      <em>
+        点击左键<span class="highlight">添加点位</span>
+        <br />
+        点击右键<span class="highlight">绘制</span>
+      </em>
+    </div>
+    <div id="cesiumContainer"></div>
+  </body>
+  <script src="/node_modules/cesium/Build/Cesium/Cesium.js"></script>
+  <script src="/node_modules/@turf/turf/turf.min.js"></script>
+  <script src="./drown.js"></script>
+</html>

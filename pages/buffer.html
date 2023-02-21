@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/node_modules/cesium/Build/Cesium/Widgets/widgets.css" />
+    <title>缓冲区分析</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #cesiumContainer {
+        height: 100vh;
+      }
+      #toolbar {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 8px;
+        border-radius: 6px;
+        color: #fff;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      input {
+        width: 60px;
+        padding: 4px 6px;
+        font-size: 14px;
+        border: 1px solid #eee;
+        outline: none;
+        box-shadow: none;
+      }
+      button {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+      }
+      button.active {
+        background: #32abf1;
+        color: #fff;
+      }
+      em {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.85em;
+      }
+      .highlight {
+        color: #fee301;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar">
+      <label for="bufferInput">
+        <input type="number" id="bufferInput" value="0.1" step="0.1" min="0" />
+        <span>公里</span>
+      </label>
+      <button class="active" data-mode="0">点</button>
+      <button data-mode="1">线</button>
+      <button data-mode="2">面</button>
+      <em class="tip" style="display: none">
+        点击左键<span class="highlight">添加点位</span>
+        <br />
+        点击右键<span class="highlight">绘制</span>
+      </em>
+    </div>
+    <div id="cesiumContainer"></div>
+  </body>
+  <script src="/node_modules/cesium/Build/Cesium/Cesium.js"></script>
+  <script src="/node_modules/@turf/turf/turf.min.js"></script>
+  <script src="./buffer.js"></script>
+</html>
